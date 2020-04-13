@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>BTrack - Login</title>
+        <style>
+            .header {
+                background-image: url("/assets/images/bg_login.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+            }
+            .tab
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    </head>
+    </head>
+    <body>
+            <header class="page-header header container-fluid">
+            <div class="container">
+                <ul class="nav nav-tabs" role="tablist">
+                     <li class="active"><a href="#singuppanel" data-toggle="tab">Sign up</a></li>
+                     <li><a href="#loginpanel" data-toggle="tab">Login</a></li>
+                 </ul>
+             <div class="tab-content">
+                <div class="tab-pane active" id="singuppanel">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Name" id="name1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Email address" id="email1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" id="passw1">
+                                </div>
+                            </form>
+                            <button type="button">Sign up</button>
+                     </div>
+                     <div class="tab-pane" id="loginpanel">
+                         <form>
+                                <div class="form-group">
+                                        <input type="text" placeholder="Email address" id="email1">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" placeholder="Password" id="passw1">
+                                    </div>
+                                <button type="button">Login</button>
+                         </form>
+                     </div>
+                 </div>  
+             </div> 
+            </header>
+            <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <script type="text/javascript" src='main_load.js'></script>
+    </body>
+</html>
