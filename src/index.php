@@ -4,18 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    </head>
-        <link rel="stylesheet" href="/assets/styles/main.css" type="text/css">
+        <link rel="stylesheet" href="main.css" type="text/css">
+        <?php 
+        session_start();
+        if(isset($_GET['error']) && $_GET['error'] == "1") {
+            echo '<script type="text/javascript">alert("Error occured, try again"); </script>';
+        }
+        else if(isset($_GET['error']) && $_GET['error'] == "2") {
+            echo '<script type="text/javascript">alert("Incorrect username or password"); </script>';
+        }
+        else if(isset($_GET['register']) && $_GET['register'] == "1") {
+            echo '<script type="text/javascript">alert("Succesfully registered, please login again"); </script>';
+        }
+        ?>
+
         <script>
             function user_validate() {
-                let name = document.signupform.name2.value;
+                
+                let name = document.forms["signupform"].name2.value;
                 let email = document.signupform.email2.value;
                 let passw = document.signupform.passw2.value;
-
                 if(name == "" || email == "" || passw == "") {
                     alert("Please fill all the fields");
                     return false;
                 }
-                return true;
             }
         </script>
     <body>
@@ -31,12 +43,12 @@
                                 </ul>
                             <div class="tab-content">        
                             <div class="tab-pane active" role="tabpanel" id="loginmodal1">
-                            <form id="loginform" method="POST">
+                            <form id="loginform" method="POST" action="login.php">
                                 <div class="form-group">
-                                <input type="text" class="form-control" id="email1" placeholder="Email address">
+                                <input type="text" class="form-control" id="email1" name="email1" placeholder="Email address">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="passw1" placeholder="Password">
+                                <input type="password" class="form-control" id="passw1" name="passw1" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Login" class="btn button">
@@ -45,15 +57,15 @@
                            
                         </div>
                         <div class="tab-pane" id="signupmodal">
-                                <form id="signupform" method="POST" action="register.php" onsubmit="return user_validate()">
+                                <form name="signupform" id="signupform" method="POST" action="register.php" onsubmit="return user_validate()">
                                         <div class="form-group">
-                                                <input type="text" class="form-control" id="name2" placeholder="Name">
+                                                <input type="text" class="form-control" id="name2" name="name2" placeholder="Name">
                                             </div>
                                         <div class="form-group">
-                                        <input type="text" class="form-control" id="email2" placeholder="Email address">
+                                        <input type="text" class="form-control" id="email2" name="email2" placeholder="Email address">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="passw2" placeholder="Password">
+                                        <input type="password" class="form-control" id="passw2" name="passw2" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" value="Sign up" class="btn button">
@@ -71,25 +83,25 @@
             </div>
             </div>
             <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="#">BTrack</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainnavbar">
                 Expand<span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainnavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sign up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#loginModal" data-toggle="modal">Sign up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#loginModal" data-toggle="modal">Login</a></li>    
                 </ul>
             </div>
         </nav>
         <header class="page-header header container-fluid">   
             <div class="container">
                 <div class="description">
-                    <h2>A Platform to connect with other individuals to share and answer queries.</h2>
-                    <p>This is a website where you can submit your bugs and get answers to your queries.</p>
+                    <h2>Finding it hard to manage bugs in your software efficiently?</h2>
+                    <p>BTrack helps you to manage your projects while collaborating with your teammates with ease.</p>
                     <button class="btn btn-outline-secondary btn-lg" data-toggle="modal" data-target="#loginModal">Get Started</button>
                 </div>
             </div> 
